@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="todo-container">
     <NewTodo @AddTodo="addNewTodo($event)" />
     <div
       :class="[{ done: todoItem.done }, 'incomplete']"
@@ -52,7 +52,31 @@ export default class Todo extends Vue {
 </script>
 
 <style lang="scss">
-.done {
-  background: green;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.todo-container {
+  background-color: aquamarine;
+  height: 100%;
+  width: 100vw;
+
+  .incomplete {
+    background-color: brown;
+  }
+  .done {
+    background: green;
+  }
+}
+@media (max-width: 640px) {
+  .todo-container {
+    background-color: rgb(189, 127, 255);
+  }
+}
+@media (min-width: 786px) {
+  .todo-container {
+    background-color: rgb(255, 127, 127);
+  }
 }
 </style>
