@@ -16,6 +16,7 @@ export default class NewTodo extends Vue {
 
   addNewTodo() {
     this.$emit("AddTodo", new Task(this.content));
+    this.content = "";
   }
 }
 </script>

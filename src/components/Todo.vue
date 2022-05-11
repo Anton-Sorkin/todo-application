@@ -19,6 +19,7 @@ import NewTodo from "./NewTodo.vue";
 import RemoveTodo from "./RemoveTodo.vue";
 import ToggleTodo from "./ToggleTodo.vue";
 import { Task } from "../Models/task";
+import { warn } from "@vue/runtime-core";
 
 @Options({
   components: {
@@ -31,14 +32,21 @@ export default class Todo extends Vue {
   Task: Task[] = [];
 
   addNewTodo(t: Task) {
-    this.Task.push(t);
+    if (t.content.length > 0) {
+      if (t.content.length < 30) {
+        this.Task.push(t);
+      } else {
+        alert("That's just to much information");
+      }
+    } else {
+      alert("Add atleast one character please");
+    }
   }
   removeTodo(i: number) {
     this.Task.splice(i, 1);
   }
   toggleTodo(i: number) {
     this.Task[i].done = !this.Task[i].done;
-    console.log(this.Task[i].done);
   }
 }
 </script>
