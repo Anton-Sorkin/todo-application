@@ -11,9 +11,6 @@
 import { Options, Vue } from "vue-class-component";
 import { Task } from "../Models/task";
 
-@Options({
-  components: {},
-})
 export default class NewTodo extends Vue {
   content = "";
 

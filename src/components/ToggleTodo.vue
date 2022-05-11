@@ -2,11 +2,11 @@
   <button
     @click="
       () => {
-        removeTodo(i);
+        toggleTodo(i);
       }
     "
   >
-    Remove
+    Toggle done
   </button>
 </template>
 
@@ -15,11 +15,11 @@ import { Options, Vue } from "vue-class-component";
 import { Task } from "../Models/task";
 import { Prop } from "vue-property-decorator";
 
-export default class RemoveTodo extends Vue {
+export default class ToggleTodo extends Vue {
   @Prop() Task!: Task[];
 
-  removeTodo(i: number) {
-    this.$emit("removeTodo", i);
+  toggleTodo(i: number) {
+    this.$emit("toggleTodo", i);
   }
 }
 </script>
