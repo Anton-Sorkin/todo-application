@@ -6,9 +6,13 @@
       v-for="(todoItem, i) in Task"
       :key="i"
     >
-      <h2>{{ todoItem.content }}</h2>
-      <RemoveTodo @removeTodo="removeTodo(i)" />
-      <ToggleTodo @toggleTodo="toggleTodo(i)" />
+      <div class="text-area">
+        <h2>{{ todoItem.content }}</h2>
+      </div>
+      <div class="todo-btns">
+        <RemoveTodo @removeTodo="removeTodo(i)" />
+        <ToggleTodo @toggleTodo="toggleTodo(i)" />
+      </div>
     </div>
   </div>
 </template>
@@ -19,7 +23,6 @@ import NewTodo from "./NewTodo.vue";
 import RemoveTodo from "./RemoveTodo.vue";
 import ToggleTodo from "./ToggleTodo.vue";
 import { Task } from "../Models/task";
-import { warn } from "@vue/runtime-core";
 
 @Options({
   components: {
@@ -57,26 +60,63 @@ export default class Todo extends Vue {
   padding: 0px;
   box-sizing: border-box;
 }
+
 .todo-container {
-  background-color: aquamarine;
   height: 100%;
   width: 100vw;
-
   .incomplete {
-    background-color: brown;
+    background-color: rgb(222, 222, 222);
+    height: 100px;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .text-area {
+      width: 60vw;
+    }
+    .todo-btns {
+      height: 35px;
+      width: 200px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      button {
+        border: none;
+        height: 27.5px;
+        width: 85px;
+        border-radius: 10px;
+        background-color: rgb(187, 187, 187);
+      }
+    }
   }
   .done {
-    background: green;
+    background: rgb(119, 119, 119);
   }
 }
 @media (max-width: 640px) {
   .todo-container {
-    background-color: rgb(189, 127, 255);
+    .incomplete {
+      display: flex;
+      flex-direction: column;
+      .text-area {
+        h2 {
+          font-size: 12pt;
+        }
+      }
+    }
   }
 }
-@media (min-width: 786px) {
+@media (min-width: 876px) {
   .todo-container {
-    background-color: rgb(255, 127, 127);
+    .incomplete {
+      margin-top: 40px;
+      .text-area {
+        h2 {
+          font-size: 20pt;
+        }
+      }
+    }
   }
 }
 </style>
