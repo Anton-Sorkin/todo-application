@@ -86,7 +86,7 @@ export default class Todo extends Vue {
         height: 27.5px;
         width: 85px;
         border-radius: 10px;
-        background-color: rgb(187, 187, 187);
+        background-color: rgb(184, 184, 184);
       }
     }
   }
