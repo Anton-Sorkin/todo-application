@@ -4,6 +4,7 @@
     class="todoinput"
     @keydown.enter="addNewTodo"
     v-model="content"
+    placeholder="Add a Todo"
   />
 </template>
 
@@ -11,16 +12,24 @@
 import { Options, Vue } from "vue-class-component";
 import { Task } from "../Models/task";
 
-@Options({
-  components: {},
-})
 export default class NewTodo extends Vue {
   content = "";
 
   addNewTodo() {
     this.$emit("AddTodo", new Task(this.content));
+    this.content = "";
   }
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+input {
+  height: 30px;
+  width: 180px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(219, 219, 219);
+
+  text-align: center;
+}
+</style>
